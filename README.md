@@ -13,6 +13,12 @@ pip3 install --user -U fakeua
 ```
 
 ## Usage
+FakeUA can be used from the shell too.
+
+fakeua -h
+
+Or importing its functions.
+
 ```
 In [1]: import fakeua
 
@@ -35,7 +41,3 @@ Out[4]: ...
 In [5]: fakeua.get_random_ua()
 Out[5]: 'Mozilla/5.0 (Windows NT 6.2; WOW64; rv:63.0) Gecko/20100101 Firefox/63.0'
 ```
-
-FakeUA can be used from the shell too.
-
-fakeua -h
