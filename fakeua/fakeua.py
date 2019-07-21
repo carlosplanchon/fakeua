@@ -9,7 +9,7 @@ from json import dump, load
 
 from typing import Any, Dict, List, Optional
 
-from random import choice
+from secrets import choice
 
 
 DEFAULT_JSON_FP: Path = Path().home() / ".fakeua_databrowsers.json"
