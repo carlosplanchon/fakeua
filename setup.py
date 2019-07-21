@@ -14,7 +14,7 @@ setup(
             "fakeua = fakeua.__main__:main"
         ]
     },
-    version="0.1.0",
+    version="0.1.1",
     license="GPL3",
     description="Python3 module made as a wrapper of fake-useragent.",
     long_description=readme,
@@ -23,7 +23,7 @@ setup(
     author_email="bubbledoloresuruguay2@gmail.com",
     url="https://github.com/carlosplanchon/fakeua",
     download_url="https://github.com/carlosplanchon/"
-        "fakeua/archive/v0.1.0.tar.gz",
+        "fakeua/archive/v0.1.1.tar.gz",
     keywords=["fake", "useragent", "networking", "web"],
     classifiers=[
         "Intended Audience :: Developers",
