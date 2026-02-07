@@ -15,8 +15,8 @@ setup(
         ]
     },
     version="0.1.2",
-    license="GPL3",
-    description="Python3 module made as a wrapper of fake-useragent.",
+    license="MIT",
+    description="Python module made as a wrapper of fake-useragent.",
     long_description=readme,
     long_description_content_type="text/markdown",
     author="Carlos A. Planchón",
