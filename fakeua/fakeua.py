@@ -7,7 +7,7 @@ from pathlib import Path
 
 from json import dump, load
 
-from typing import Any, Dict, List, Optional
+from typing import Any, Optional
 
 from secrets import choice
 
@@ -39,7 +39,7 @@ def update_useragent_db(path: Path = DEFAULT_JSON_FP) -> bool:
 
 def load_useragent_db(
     path: Path = DEFAULT_JSON_FP
-        ) -> Optional[Dict[Any, Any]]:
+        ) -> Optional[dict[Any, Any]]:
     """Load json data_browsers file."""
     if path.exists():
         with open(path, "r") as json_file:
@@ -53,7 +53,7 @@ def get_useragent_list(
     browser: str = DEFAULT_BROWSER,
     version_filter: str = DEFAULT_VERSION_FILTER,
     path: Path = DEFAULT_JSON_FP
-        ) -> List[Any]:
+        ) -> list[Any]:
     """Get useragent list with the desired parameters."""
     data_browsers = load_useragent_db()
     if data_browsers:

@@ -7,19 +7,21 @@ have an API which is brittle and too verbose for cases when you just want
 predictability and the work done without unnecesary headaches.
 
 ## Installation
-### Install with pip
-```
-pip3 install --user -U fakeua
+### Install with uv
+```bash
+uv add fakeua
 ```
 
 ## Usage
 FakeUA can be used from the shell too.
 
+```bash
 fakeua -h
+```
 
 Or importing its functions.
 
-```
+```python
 In [1]: import fakeua
 
 # Update useragent DB in a json file (~/.fakeua_databrowsers.json)
