@@ -1,5 +1,5 @@
 # fakeua
-*Python3 module made as a wrapper of fake-useragent.*
+*Python module made as a wrapper of fake-useragent.*
 
 ## Rationale:
 fake-useragent package (https://github.com/hellysmile/fake-useragent)
