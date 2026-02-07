@@ -10,77 +10,72 @@ from fakeua.fakeua import DEFAULT_JSON_FP
 
 from pathlib import Path
 
-from argparse import ArgumentParser
+import typer
 
-import sys
+app = typer.Typer()
 
 
-def main():
-    parser = ArgumentParser()
-    # Argparse logic.
-    parser.add_argument(
-            "-u", "--update",
-            help="Update useragent DB.",
-            action="store_true",
-            dest="update"
-        )
-    parser.add_argument(
-            "-p", "--path",
-            type=str,
-            help="Json filepath where data_browsers dict is saved,"
-            f"by default is {DEFAULT_JSON_FP}.",
-            dest="path",
-            default=DEFAULT_JSON_FP.as_posix()
-        )
-    parser.add_argument(
-            "-b", "--browser",
-            type=str,
-            help="Specify a web browser",
-            dest="browser",
-            default=DEFAULT_BROWSER
-        )
-    parser.add_argument(
-            "-f", "--filter",
-            type=str,
-            help="Specify a browser version filter",
-            dest="filter",
-            default=DEFAULT_VERSION_FILTER
-        )
-    parser.add_argument(
-            "-r", "--list",
-            help="Get UA list.",
-            action="store_true",
-            dest="list"
-        )
-    parser.add_argument(
-            "-c", "--random",
-            help="Choice a random element from UA list.",
-            action="store_true",
-            dest="random"
-        )
-    args = parser.parse_args()
-
-    if args.update:
-        if args.path:
-            update_useragent_db(path=Path(args.path))
-        else:
-            update_useragent_db()
+@app.command()
+def main(
+    update: bool = typer.Option(
+        False,
+        "--update",
+        "-u",
+        help="Update useragent DB."
+    ),
+    path: str = typer.Option(
+        DEFAULT_JSON_FP.as_posix(),
+        "--path",
+        "-p",
+        help=f"Json filepath where data_browsers dict is saved, by default is {DEFAULT_JSON_FP}."
+    ),
+    browser: str = typer.Option(
+        DEFAULT_BROWSER,
+        "--browser",
+        "-b",
+        help="Specify a web browser"
+    ),
+    filter: str = typer.Option(
+        DEFAULT_VERSION_FILTER,
+        "--filter",
+        "-f",
+        help="Specify a browser version filter"
+    ),
+    list: bool = typer.Option(
+        False,
+        "--list",
+        "-r",
+        help="Get UA list."
+    ),
+    random: bool = typer.Option(
+        False,
+        "--random",
+        "-c",
+        help="Choice a random element from UA list."
+    )
+):
+    if update:
+        update_useragent_db(path=Path(path))
         print("Browsers database updated.")
-        sys.exit(0)
+        raise typer.Exit(0)
 
-    if args.list:
+    if list:
         filtered_ua_list = get_useragent_list(
-            browser=args.browser,
-            version_filter=args.filter,
-            path=Path(args.path)
-            )
-        if args.random:
+            browser=browser,
+            version_filter=filter,
+            path=Path(path)
+        )
+        if random:
             random_ua = get_random_ua(
-                browser=args.browser,
-                version_filter=args.filter,
-                path=Path(args.path)
-                )
+                browser=browser,
+                version_filter=filter,
+                path=Path(path)
+            )
             print(random_ua)
         else:
             for ua in filtered_ua_list:
                 print(ua)
+
+
+if __name__ == "__main__":
+    app()
